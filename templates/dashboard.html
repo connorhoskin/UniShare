@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            padding: 20px;
+        }
+        h1, h2 {
+            color: #0055A2; /* Otago Blue */
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .container {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        form {
+            background-color: #e6e6e6;
+            padding: 20px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        input, button {
+            padding: 10px;
+            margin: 5px 0;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            width: 100%;
+        }
+        button {
+            background-color: #0055A2; /* Otago Blue */
+            color: #ffffff;
+            cursor: pointer;
+            border: none;
+            margin-top: 10px;
+        }
+        button:hover {
+            background-color: #003366; /* Darker Blue */
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+        }
+        /* Styles for the flashed messages */
+        .alert {
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            text-align: center;
+        }
+        .alert-error {
+            background-color: #f44336; /* Red */
+            color: white;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>Welcome, {{ current_user.username }}</h1>
+
+
+    <!-- Display flashed messages -->
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+    {% for category, message in messages %}
+    <div class="alert alert-{{ category }}">
+        {{ message }}
+    </div>
+    {% endfor %}
+    {% endif %}
+    {% endwith %}
+
+    <h2>Create a Study Group</h2>
+    <form action="/create_group" method="post">
+        <input type="text" name="group_name" placeholder="Group Name" required>
+        <button type="submit">Create</button>
+    </form>
+
+    <h2>Join a Study Group</h2>
+    <form action="/join_group" method="post">
+        <input type="text" name="group_name" placeholder="Group Name" required>
+        <button type="submit">Join</button>
+    </form>
+
+    <h2>Leave a Study Group</h2>
+    <form action="/leave_group" method="post">
+        <input type="text" name="group_name" placeholder="Group Name" required>
+        <button type="submit">Leave</button>
+    </form>
+
+
+
+    <!-- Logout Section -->
+    <form action="/view_studygroups" method="get">
+        <button type="submit">View Study Groups</button>
+    </form>
+
+    <form action="/logout" method="post">
+        <button type="submit">Logout</button>
+    </form>
+</div>
+</body>
+</html>

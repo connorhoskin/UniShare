@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Study Group Session</title>
+</head>
+<body>
+<h2>Welcome to the Study Group Session</h2>
+<div id="meet"></div>
+<script src='https://meet.jit.si/external_api.js'></script>
+<script>
+    var domain = "meet.jit.si";
+    var options = {
+        roomName: "{{ group_id }}",
+        width: 1000,
+        height: 1000,
+        parentNode: document.querySelector('#meet')
+    };
+    var api = new JitsiMeetExternalAPI(domain, options);
+</script>
+</body>
+</html>

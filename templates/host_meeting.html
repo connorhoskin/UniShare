@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Host Meeting</title>
+    <!-- Add any necessary styles or scripts here -->
+</head>
+<body>
+<div class="container">
+    <h1>Host Meeting for {{ group.name }}</h1>
+
+    <!-- Display meeting content or embed video conferencing platform here -->
+    <div class="jitsi-meeting">
+        <iframe src="{{ meeting_url }}" allow="camera; microphone; fullscreen"></iframe>
+    </div>
+    <!-- Back to Dashboard link -->
+    <h2><a class="blue-button" href="/dashboard">Back to Dashboard</a></h2>
+
+    <!-- Logout Section -->
+    <h2><a class="blue-button" href="/logout">Logout</a></h2>
+</div>
+</body>
+</html>
